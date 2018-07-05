@@ -1,9 +1,11 @@
 import React from 'react'
 
+import Avatar from './Avatar'
+
 const UserInfo = (props) => {
     return (
         <div className="UserInfo" style={styles.userinfo}>
-            <div className="Avatar" style={styles.avatar}></div>
+            <Avatar user={props.user} />
             <div className="user" style={styles.user}>
                 {props.user.displayName}
             </div>
@@ -20,10 +22,6 @@ const styles = {
         marginBottom: '1rem',
         display: 'flex',
         alignItems: 'center',
-    },
-
-    avatar: {
-        marginRight: '.5rem',
     },
 
     user: {
