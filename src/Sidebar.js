@@ -1,27 +1,16 @@
 import React from 'react'
 
+import UserInfo from './UserInfo'
+import RoomList from './RoomList'
+
 const Sidebar = (props) => {
   return (
     <aside className="Sidebar" style={styles.sidebar}>
-      <div className="UserInfo" style={styles.children}>
-        <div className="Avatar"></div>
-        <div className="user">
-          {props.user.displayName}
-        </div>
-        <a href="#">
-          <i className="fas fa-sign-out-alt"></i>
-        </a>
-      </div>
+      <UserInfo user={props.user}/>
       <h1 style={styles.h1}>
         XTBC 18
       </h1>
-      <nav className="RoomList" style={styles.children}>
-        <h2>Rooms</h2>
-        <ul style={styles.ul}>
-          <li><a href="#" style={styles.rooms}># general</a></li>
-          <li><a href="#" style={styles.rooms}># random</a></li>
-        </ul>
-      </nav>
+      <RoomList />
     </aside>
     )
   }
@@ -34,24 +23,6 @@ const Sidebar = (props) => {
       padding: '1rem 0',
       display: 'flex',
       flexDirection: 'column',
-    },
-
-    children: {
-      padding: '0 1rem'
-    },
-
-    ul: {
-      listStyleType: 'none',
-      marginLeft: 0,
-      paddingLeft: 0,
-    },
-
-    rooms: {
-      color: 'rgba(255, 255, 255, 0.8)',
-      '::before': {
-        content: '# ',
-      },
-      textDecoration: 'none',
     },
 
     h1: {
