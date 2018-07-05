@@ -7,11 +7,14 @@ class App extends Component {
   constructor() {
     super()
 
+
+    //user login page will modify this
     this.state = {
       user: {
         uid: 'someNumberHere',
         displayName: 'inVader',
         email: 'rshuey@iu.edu',
+        pic: './vader.jpg'
       }
     }
   }
