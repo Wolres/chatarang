@@ -16,6 +16,7 @@ const UserInfo = (props) => {
 
 const styles = {
     userinfo: {
+        padding: '0 1rem',
         marginBottom: '1rem',
         display: 'flex',
         alignItems: 'center',
