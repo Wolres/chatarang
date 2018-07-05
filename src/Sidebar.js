@@ -17,9 +17,9 @@ const Sidebar = (props) => {
       </h1>
       <nav className="RoomList" style={styles.children}>
         <h2>Rooms</h2>
-        <ul>
-          <li><a href="#">general</a></li>
-          <li><a href="#">random</a></li>
+        <ul style={styles.ul}>
+          <li><a href="#" style={styles.rooms}># general</a></li>
+          <li><a href="#" style={styles.rooms}># random</a></li>
         </ul>
       </nav>
     </aside>
@@ -28,7 +28,7 @@ const Sidebar = (props) => {
 
   const styles = {
     sidebar: {
-      backgroundcolor: '#333344',
+      backgroundColor: '#333344',
       color: 'rgba(255, 255, 255, 0.8)',
       width: '12rem',
       padding: '1rem 0',
@@ -39,7 +39,21 @@ const Sidebar = (props) => {
     children: {
       padding: '0 1rem'
     },
-    
+
+    ul: {
+      listStyleType: 'none',
+      marginLeft: 0,
+      paddingLeft: 0,
+    },
+
+    rooms: {
+      color: 'rgba(255, 255, 255, 0.8)',
+      '::before': {
+        content: '# ',
+      },
+      textDecoration: 'none',
+    },
+
     h1: {
       color: 'white',
       fontSize: '1.2rem',
