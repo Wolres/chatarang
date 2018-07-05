@@ -24,7 +24,6 @@ const styles = {
     },
 
     details: {
-        //for the timestamps
         flex: 1,
         paddingLeft: '0.5rem',
     }
