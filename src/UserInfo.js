@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Avatar from './Avatar'
+import SignOutButton from './SignOutButton';
 
 const UserInfo = (props) => {
     return (
@@ -9,9 +10,7 @@ const UserInfo = (props) => {
             <div className="user" style={styles.user}>
                 {props.user.displayName}
             </div>
-            <a href="#" style={styles.a}>
-                <i className="fas fa-sign-out-alt"></i>
-            </a>
+            <SignOutButton />
       </div>
     )
 }
