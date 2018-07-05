@@ -2,7 +2,7 @@ import React from 'react'
 
 const RoomList = () => {
     return (
-        <nav className="RoomList">
+        <nav className="RoomList" style={styles.RoomList}>
             <h2 style={styles.h2}>Rooms</h2>
             <ul style={styles.ul}>
                 <li style={styles.li}><a href="#" style={styles.a}># general</a></li>
@@ -13,6 +13,10 @@ const RoomList = () => {
 }
 
 const styles = {
+    RoomList: {
+        padding: '0 1rem',
+    },
+
     h2: {
         fontSize: '1rem',
     },
