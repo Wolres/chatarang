@@ -6,7 +6,7 @@ const Avatar = (props) => {
             className="Avatar" 
             style={{
                 ...styles,
-                backgroundImage: './vader.jpg'
+                backgroundImage: props.user.pic
          }}
         ></div>
     )
