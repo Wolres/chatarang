@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Stylesheet, css } from 'aphrodite'
 
 class MessageForm extends Component {
     state = {
@@ -18,10 +19,12 @@ class MessageForm extends Component {
     render() {
         return (
             <form 
-                className="MessageForm"
+                className={`MessageForm ${css(styles.messageForm)}`}
                 onSubmit={this.handleSubmit}
-                style={styles.messageForm}
             >
+                <div className={css(styles.icon)}>
+                    <i className="fas fa-comment-alt"></i>
+                </div>
                 <input
                     type="text"
                     name="body"
@@ -30,9 +33,12 @@ class MessageForm extends Component {
                     onChange={this.handleChange}
                     autoFocus
                     required
-                    style={styles.input}
+                    className={css(styles.input)}
                 />
-                <button type="submit" style={styles.button}>
+                <button 
+                    type="submit" 
+                    className={styles.button}
+                >
                     <i className="fas fa-bullhorn" title="send"></i>
                 </button>
             </form>
@@ -40,7 +46,7 @@ class MessageForm extends Component {
     }
 }
 
-const styles = {
+const styles = StyleSheet.create({
     messageForm: {
         backgroundColor: 'white',
         height: '3rem',
@@ -52,20 +58,24 @@ const styles = {
         padding: 0
     },
 
-    chatIcon: {
-            display: 'flex',
-            borderRadius: '0.5rem',
-            alignItems: 'center',
-            backgroundColor: 'white',
-            color: '#ccc',
-            padding: '0 0.5rem',
-            fontSize: '1.2rem',
-        },
+    icon: {
+        display: 'flex',
+        borderRadius: '0.5rem',
+        alignItems: 'center',
+        backgroundColor: 'white',
+        color: '#ccc',
+        padding: '0 0.5rem',
+        fontSize: '1.2rem',
+    },
 
     input: {
         flex: 1,
         fontSize: '1.2rem',
         border: 0,
+    
+        ':focus': {
+            outline: 0,
+        },
     },
     
     button: {
@@ -77,7 +87,7 @@ const styles = {
         borderTopRightRadius: '0.5rem',
         borderBottomRightRadius: '0.5rem',
         border: '1px solid white',
-    }
-}
+    },
+})
 
 export default MessageForm
