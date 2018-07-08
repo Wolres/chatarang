@@ -14,7 +14,7 @@ class App extends Component {
         uid: 'someNumberHere',
         displayName: 'inVader',
         email: 'rshuey@iu.edu',
-        pic: './vader.jpg'
+        pic: './vader'  //https://imgur.com/a/iXRnhBH
       }
     }
   }

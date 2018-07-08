@@ -1,4 +1,5 @@
 import React from 'react'
+import vader from './vader.jpg'
 
 const Avatar = (props) => {
     return (
@@ -6,7 +7,7 @@ const Avatar = (props) => {
             className="Avatar" 
             style={{
                 ...styles,
-                backgroundImage: props.user.pic
+                image: vader
          }}
         ></div>
     )
