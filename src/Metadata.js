@@ -1,5 +1,4 @@
 import React from 'react'
-import Timestamp from 'react'
 
 const Metadata = (props) => {
     return(
