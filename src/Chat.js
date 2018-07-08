@@ -10,12 +10,14 @@ class Chat extends Component {
 
         this.state = {
             messages: [
+                //timestamps update on refresh, will put time in Chat state later
                 {
                     id: 1, 
                     user: {
                         uid: 123,
                         displayName: 'yodo_or_do_not', 
                         email: 'forcemaster@jedi.com',
+                        //pic: <img src={https:imgur.com/a/8Qvgr5C}></img>
                     },
                     body: 'A giant chatter box, am I!',
                 },
@@ -24,7 +26,8 @@ class Chat extends Component {
                     user: {
                         uid: 124,
                         displayName: 'brobi_wan_kenobi', 
-                        email: 'chosenteach@jedi.com'
+                        email: 'chosenteach@jedi.com',
+                        pic: './kenobi.jpg'  //https://imgur.com/a/Yhu8Fqg
                     },
                     body: 'Hello there!',
                 },

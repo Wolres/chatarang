@@ -9,7 +9,9 @@ const Metadata = (props) => {
             <div className="time" style={styles.time}>
                 {new Intl.DateTimeFormat('en-US', {hour: '2-digit', 
                                                    minute: '2-digit', 
-                                                   second: '2-digit'}).format(Date.now())}
+                                                   second: '2-digit'}).format(Date.now())
+                                                   //timestamps update on refresh, will put time in Chat state later
+                                                }
             </div>
         </div>
     )
