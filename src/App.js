@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 import './App.css'
 import Main from './Main'
+import SignIn from './SignIn'
 
 class App extends Component {
   constructor() {
@@ -10,19 +11,21 @@ class App extends Component {
 
     //user login page will modify this
     this.state = {
-      user: {
-        uid: 'someNumberHere',
-        displayName: 'inVader',
-        email: 'rshuey@iu.edu',
-        pic: './vader'  //https://imgur.com/a/iXRnhBH
-      }
+      user: {}
     }
   }
 
   render() {
     return (
       <div className="App">
-        <Main user={this.state.user} />
+        {
+          this.signedIn()
+          ? <Main
+              user={this.state.user}
+              signOut={this.signOut}
+            />
+          : <SignIn handleAuth={this.handleAuth} />
+        }
       </div>
     )
   }
