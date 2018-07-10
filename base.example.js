@@ -1,6 +1,8 @@
-import Rebase from 're-base'
 import firebase from 'firebase/app'
 import 'firebase/database'
+import 'firebase/auth'
+import Rebase from 're-base'
+
 
 // Initialize Firebase
 const config = {
@@ -14,11 +16,12 @@ const config = {
 
 const app = firebase.initializeApp(config)
 
-//configure authentication
+// Configure authentication
 export const auth = firebase.auth()
 export const googleProvider = new firebase.auth.GoogleAuthProvider()
+export const githubProvider = new firebase.auth.GithubAuthProvider()
 
-//configure database
+// Configure database
 const db = firebase.database(app)
 const base = Rebase.createClass(db)
 
