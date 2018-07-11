@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import Sidebar from './Sidebar'
 import Chat from './Chat'
 import RoomForm from './RoomForm'
 import base from './base'
+
 
 class Main extends Component {
   state = {
@@ -12,7 +14,6 @@ class Main extends Component {
       description: 'Chat about stuff',
     },
     rooms: {},
-    showRoomForm: false,
   }
 
   componentDidMount() {
@@ -29,6 +30,16 @@ class Main extends Component {
         }
       }
     )
+
+    const { roomName = this.props.match.params }
+    this.setCurrentRoom(roomName)
+  }
+
+  componentDidUpdate(prevProps) {
+    const { roomName = this.props.match.params }
+    if (prevProps.match.params.roomName !== roomName) {
+      this.setRoomFromRoute()
+    }
   }
 
   componentWillUnmount() {
@@ -47,31 +58,40 @@ class Main extends Component {
     this.setState({ room })
   }
 
-  showRoomForm = () => {
-    this.setState({ showRoomForm: true })
-  }
-
-  hideRoomForm = () => {
-    this.setState({ showRoomForm: false })
-  }
-
   render() {
-    if (this.state.showRoomForm) {
-      return <RoomForm addRoom={this.addRoom} />
-    }
-
     return (
       <div className="Main" style={styles}>
-        <Sidebar
-          user={this.props.user}
-          signOut={this.props.signOut}
-          rooms={this.state.rooms}
-          setCurrentRoom={this.setCurrentRoom}
-        />
-        <Chat
-          user={this.props.user}
-          room={this.state.room}
-        />
+        <Switch>
+          <Route
+            path="/chat/new-room"
+            render={(navProps) => (
+              <RoomForm
+                addRoom={this.addRoom}
+                {...NavProps}
+              />
+            )}
+          />
+          <Route
+            path="/chat/rooms/:roomName"
+            render={() => (
+              <Fragment>
+                <Sidebar
+                  user={this.props.user}
+                  signOut={this.props.signOut}
+                  rooms={this.state.rooms}
+                />
+                <Chat
+                  user={this.props.user}
+                  room={this.state.room}
+                />
+              </Fragment>
+            )}
+          />
+          <Route render={() => (
+            <Redirect to="/chat/rooms/general" />
+          )}
+          />
+        </Switch>
       </div>
     )
   }
