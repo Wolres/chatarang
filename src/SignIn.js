@@ -1,25 +1,31 @@
 import React, { Component } from 'react'
 import { StyleSheet, css } from 'aphrodite'
 
+import { auth, googleProvider, githubProvider } from './base'
+
 class SignIn extends Component {
-    state = {
-        email: '',
-    }
+  state = {
+    email: '',
+  }
 
-    handleChange = (ev) => {
-        this.setState({ email: ev.target.value })
-    }
+  authenticate = (provider) => {
+    auth.signInWithPopup(provider)
+  }
 
-    handleSubmit = (ev) => {
-        ev.preventDefault()
-        this.props.handleAuth({
-            uid: `${this.state.email}`,
-            displayName: this.state.email,
-            email: this.state.email,
-        })
-    }
+  // handleChange = (ev) => {
+  //   this.setState({ email: ev.target.value })
+  // }
 
-render() {
+  // handleSubmit = (ev) => {
+  //   ev.preventDefault()
+  //   this.props.handleAuth({
+  //     uid: `${this.state.email}-ksdfjhu32472398`,
+  //     displayName: this.state.email,
+  //     email: this.state.email,
+  //   })
+  // }
+
+  render() {
     return (
       <div className={`SignIn ${css(styles.signIn)}`}>
         <header className={css(styles.header)}>
@@ -163,5 +169,4 @@ const styles = StyleSheet.create({
     marginRight: '1rem',
   },
 })
-
 export default SignIn
