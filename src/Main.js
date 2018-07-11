@@ -6,7 +6,6 @@ import Chat from './Chat'
 import RoomForm from './RoomForm'
 import base from './base'
 
-
 class Main extends Component {
   state = {
     room: {
@@ -27,16 +26,14 @@ class Main extends Component {
             name: 'general',
             description: 'Chat about stuff',
           },
-        }
+        },
+        then: this.setRoomFromRoute,
       }
     )
-
-    const { roomName = this.props.match.params }
-    this.setCurrentRoom(roomName)
   }
 
   componentDidUpdate(prevProps) {
-    const { roomName = this.props.match.params }
+    const { roomName } = this.props.match.params
     if (prevProps.match.params.roomName !== roomName) {
       this.setRoomFromRoute()
     }
@@ -46,6 +43,13 @@ class Main extends Component {
     base.removeBinding(this.roomsRef)
   }
 
+  setRoomFromRoute = () => {
+    const { roomName } = this.props.match.params
+    if (roomName) {
+      this.setCurrentRoom(roomName)
+    }
+  }
+  
   addRoom = room => {
     const rooms = {...this.state.rooms}
     rooms[room.name] = room
@@ -55,7 +59,20 @@ class Main extends Component {
 
   setCurrentRoom = roomName => {
     const room = this.state.rooms[roomName]
-    this.setState({ room })
+
+    if (room) {
+      this.setState({ room })
+    } else {
+      this.loadValidRoom()
+    }
+  }
+
+  loadValidRoom = () => {
+    const roomNames = Object.keys(this.state.rooms)
+    if (roomnames.length > 0) {
+      const roomName = roomNames[0]
+      this.props.history.push(`/chat/rooms/${roomName}`)
+    }
   }
 
   render() {
